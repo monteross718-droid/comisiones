@@ -108,4 +108,13 @@ h2 {
     h1 {
         margin-bottom: 24px;
     }
+
+    .mensaje-error {
+    display: block;
+    min-height: 18px;
+    margin: -14px 0 12px;
+    color: #ff6b6b;
+    font-style: italic;
+    font-size: 0.85rem;
+}
 }

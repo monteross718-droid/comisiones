@@ -10,6 +10,25 @@ function calcularComision(numeroVentas, precioProducto){
 
     return comision;
 }
+
+   function validarInput(idInput, idError) {
+    const valor = document.getElementById(idInput).value.trim();
+    const error = document.getElementById(idError);
+
+    if (valor === "") {
+        error.textContent = "Este campo no puede estar vacío.";
+    } else if (!/^\d+$/.test(valor)) {
+        error.textContent = "Ingresa solo números.";
+    } else if (valor.length > 5) {
+        error.textContent = "Máximo 5 dígitos.";
+    } else {
+        error.textContent = "";
+    }
+
+    return error.textContent === "";
+}
+
+
     function calcular(){
         // recuperamos propiedades de las cajas de texto
         //let componenteSueldoBase = document.getElementById("txtSueldoBase");
@@ -18,7 +37,14 @@ function calcularComision(numeroVentas, precioProducto){
         
         // recuperamos el valor de las cajas de texto 
         //let SueldoBaseStr = componenteSueldoBase.value;
+        
+    const sueldoValido = validarInput("txtSueldoBase", "errorSueldoBase");
+    const ventasValidas = validarInput("txtVentas", "errorVentas");
+    const precioValido = validarInput("txtPrecio", "errorPrecio");
 
+    if (!sueldoValido || !ventasValidas || !precioValido) {
+    return;
+    }
         let sueldoBase = recuperarFloat("txtSueldoBase")
         let numeroVentas = recuperarFloat("txtVentas")
         let precioProducto = recuperarFloat("txtPrecio")
